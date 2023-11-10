@@ -17,10 +17,11 @@ find_package(sensor_msgs REQUIRED)
 
 add_executable(offboard-test src/offboard-test.cpp)
 ament_target_dependencies(offboard-test rclcpp px4_msgs)
+install(TARGETS offboard-test DESTINATION lib/${PROJECT_NAME})
 
-install(TARGETS
-  offboard-test
-  DESTINATION lib/${PROJECT_NAME})
+add_executable(attitude-test src/attitude-test.cpp)
+ament_target_dependencies(attitude-test rclcpp px4_msgs)
+install(TARGETS attitude-test DESTINATION lib/${PROJECT_NAME})
 
 if(BUILD_TESTING)
   find_package(ament_lint_auto REQUIRED)
